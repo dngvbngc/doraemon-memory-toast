@@ -17,7 +17,7 @@ import { useState } from "react";
 import { navigate } from "@/utils/actions";
 
 export default function LoginPage() {
-  const { login } = useAuthStore();
+  const { user, login } = useAuthStore();
   const users = [{ username: "ari", password: "aloha" }];
 
   const [userName, setUserName] = useState("");
@@ -36,6 +36,10 @@ export default function LoginPage() {
       setMessage("username or password is not correct");
     }
   };
+
+  if (user !== "") {
+    navigate("/");
+  }
 
   return (
     <>
