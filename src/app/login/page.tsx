@@ -31,7 +31,6 @@ export default function LoginPage() {
       )
     ) {
       login(userName);
-      window.localStorage.setItem("user", userName);
       navigate("/");
     } else {
       setMessage("username or password is not correct");

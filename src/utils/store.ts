@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface AuthStore {
   user: string;
@@ -6,10 +7,17 @@ interface AuthStore {
   logout: () => void;
 }
 
-const useAuthStore = create<AuthStore>((set) => ({
-  user: window.localStorage.getItem("user") || "",
-  login: (user: string) => set(() => ({ user: user })),
-  logout: () => set(() => ({ user: "" })),
-}));
+const useAuthStore = create(
+  persist<AuthStore>(
+    (set) => ({
+      user: "",
+      login: (user: string) => set(() => ({ user })),
+      logout: () => set(() => ({ user: "" })),
+    }),
+    {
+      name: "auth-storage",
+    }
+  )
+);
 
 export default useAuthStore;
