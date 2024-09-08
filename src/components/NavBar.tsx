@@ -1,21 +1,25 @@
 "use client";
 
-import { navigate } from "@/utils/actions";
-import useAuthStore from "@/utils/store";
+import useAuthStore from "@/app/lib/store";
 import { Box, HStack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
+import { navigate, signUserOut } from "@/app/lib/actions";
 
 const NavBar = () => {
   const { user, logout } = useAuthStore();
 
-  const handleLogOut = () => {
-    logout();
-    navigate("/login");
+  const handleLogOut = async () => {
+    try {
+      logout();
+      navigate("/login");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
 
   // If user is logged in
-  if (user !== "") {
+  if (user) {
     return (
       <HStack
         color='black'
@@ -36,16 +40,17 @@ const NavBar = () => {
               {user}
             </Text>
           </button>
-          <button>
-            <Text as='i' onClick={handleLogOut}>
-              log out{" "}
-            </Text>
-          </button>
+          <form action={signUserOut}>
+            <button type='button' onClick={handleLogOut}>
+              <Text as='i'>log out</Text>
+            </button>
+          </form>
         </HStack>
       </HStack>
     );
   }
 
+  // If user is not logged in
   return (
     <HStack
       color='black'
