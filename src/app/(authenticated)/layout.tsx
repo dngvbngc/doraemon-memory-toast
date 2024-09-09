@@ -18,7 +18,7 @@ export default function AuthenticatedLayout({
       if (user === "") {
         router.push("/login");
       }
-    }, 2000);
+    }, 100);
 
     // Cleanup function to clear the timer
     return () => clearTimeout(timer);
