@@ -35,11 +35,11 @@ const NavBar = () => {
           </Link>
         </Box>
         <HStack fontWeight='semi-bold'>
-          <button>
+          <Link href={`/${encodeURIComponent(user)}`}>
             <Text as='i' fontWeight='bold'>
               {user}
             </Text>
-          </button>
+          </Link>
           <form action={signUserOut}>
             <button type='button' onClick={handleLogOut}>
               <Text as='i'>log out</Text>

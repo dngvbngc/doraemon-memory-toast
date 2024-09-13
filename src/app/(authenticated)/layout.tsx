@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import useAuthStore from "../lib/store";
 
 export default function AuthenticatedLayout({
@@ -10,13 +10,16 @@ export default function AuthenticatedLayout({
   children: React.ReactNode;
 }>) {
   const { user } = useAuthStore();
+  const pathName = usePathname().slice(1);
   const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log("Fetching user data...");
       if (user === "") {
         router.push("/login");
+      }
+      if (!pathName.startsWith(user)) {
+        router.push(`/${encodeURIComponent(user)}`);
       }
     }, 100);
 

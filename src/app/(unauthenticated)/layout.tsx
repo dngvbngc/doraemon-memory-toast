@@ -20,7 +20,7 @@ export default function UnauthenticatedLayout({
     const timer = setTimeout(() => {
       console.log("Fetching user data...");
       if (user !== "") {
-        router.push("/protected-route");
+        router.push(`/${encodeURIComponent(user)}`);
       }
     }, 100);
 

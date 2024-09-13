@@ -18,3 +18,9 @@ export type Bread = {
   content: string;
   last_updated_date: string;
 };
+
+export type UserCourseInfo = {
+  id: string;
+  name: string;
+  last_updated_date: string;
+};

@@ -17,10 +17,12 @@ const SignupForm = () => {
 
   const [state, formAction] = useFormState(createUser, initialState);
 
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const isMatching = password === confirmPassword;
-  const unableToSubmit = !isMatching || password === "";
+  const isValidUsername = /^[0-9a-z_]+$/.test(username) || username === "";
+  const unableToSubmit = !isMatching || password === "" || !isValidUsername;
 
   return (
     <form action={formAction}>
@@ -33,7 +35,7 @@ const SignupForm = () => {
           </FormLabel>
           <Input
             bgColor='white'
-            width={{ sm: "80vw", md: "50vw", lg: "30vw", xl: "20vw" }}
+            width={{ base: "80vw", md: "50vw", lg: "30vw", xl: "20vw" }}
             placeholder='nobita'
             id='username'
             type='text'
@@ -41,15 +43,26 @@ const SignupForm = () => {
             autoFocus
             minLength={3}
             required
+            onChange={(e) => setUsername(e.target.value)}
           />
-          <div id='username-error' aria-live='polite' aria-atomic='true'>
+          <Box
+            id='username-error'
+            aria-live='polite'
+            aria-atomic='true'
+            marginLeft={1}
+          >
+            {!isValidUsername && (
+              <small style={{ color: "red" }}>
+                only lowercase letters, numbers & underscores
+              </small>
+            )}
             {state.errors?.username &&
               state.errors.username.map((error: string) => (
                 <small style={{ color: "red" }} key={error}>
                   {error}
                 </small>
               ))}
-          </div>
+          </Box>
         </Box>
 
         {/* Password field */}
@@ -59,7 +72,7 @@ const SignupForm = () => {
           </FormLabel>
           <Input
             bgColor='white'
-            width={{ sm: "80vw", md: "50vw", lg: "30vw", xl: "20vw" }}
+            width={{ base: "80vw", md: "50vw", lg: "30vw", xl: "20vw" }}
             placeholder='ilovedoraemon'
             id='password'
             type='password'
@@ -70,14 +83,19 @@ const SignupForm = () => {
               setPassword(e.target.value);
             }}
           />
-          <div id='password-error' aria-live='polite' aria-atomic='true'>
+          <Box
+            id='password-error'
+            aria-live='polite'
+            aria-atomic='true'
+            marginLeft={1}
+          >
             {state.errors?.password &&
               state.errors.password.map((error: string) => (
                 <small style={{ color: "red" }} key={error}>
                   {error}
                 </small>
               ))}
-          </div>
+          </Box>
         </Box>
 
         {/* Confirm password field */}
@@ -87,7 +105,7 @@ const SignupForm = () => {
           </FormLabel>
           <Input
             bgColor='white'
-            width={{ sm: "80vw", md: "50vw", lg: "30vw", xl: "20vw" }}
+            width={{ base: "80vw", md: "50vw", lg: "30vw", xl: "20vw" }}
             placeholder='ilovedoraemon'
             id='confirm-password'
             type='password'
@@ -98,10 +116,11 @@ const SignupForm = () => {
               setConfirmPassword(e.target.value);
             }}
           />
-          <div
+          <Box
             id='confirm-password-error'
             aria-live='polite'
             aria-atomic='true'
+            marginLeft={1}
           >
             {!isMatching && (
               <small style={{ color: "red" }}>
@@ -114,14 +133,14 @@ const SignupForm = () => {
                   {error}
                 </small>
               ))}
-          </div>
+          </Box>
         </Box>
 
         <Button
           bgColor={{ base: "lightblue", lg: "lightpink" }}
           color='black'
           type='submit'
-          aria-disabled={unableToSubmit}
+          aria-disabled={username === "" || unableToSubmit}
         >
           sign up
         </Button>
