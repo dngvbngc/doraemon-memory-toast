@@ -91,6 +91,7 @@ const LoginForm = () => {
 
         <Button
           bgColor={{ base: "lightblue", lg: "lightpink" }}
+          _hover={{ bgColor: { base: "skyblue", lg: "hotpink" } }}
           color='black'
           type='submit'
           aria-disabled={isPending || !(username !== "" && password !== "")}

@@ -1,14 +1,20 @@
+"use client";
+
 import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 import { UserCourseInfo } from "@/app/lib/definitions";
 import loafImage from "@/assets/loaf.svg";
 import Image from "next/image";
+import Link from "next/link";
+import useAuthStore from "@/app/lib/store";
 
 interface Props {
   course: UserCourseInfo;
 }
 
 export default function CourseLoaf({ course }: Props) {
+  const { user } = useAuthStore();
+
   return (
     <Box
       style={{
@@ -27,21 +33,23 @@ export default function CourseLoaf({ course }: Props) {
         src={loafImage}
         alt='loaf image'
       />
-      <Text
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "40%",
-          transform: "translate(-30%, -50%)",
-          fontWeight: "bold",
-          color: "black",
-          zIndex: 1,
-        }}
-        fontSize='28px'
-        textAlign='center'
-      >
-        {course.name.toLowerCase()}
-      </Text>
+      <Link href={`/${user}/courses/${course.id}`}>
+        <Text
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "40%",
+            transform: "translate(-30%, -50%)",
+            fontWeight: "bold",
+            color: "black",
+            zIndex: 1,
+          }}
+          fontSize='28px'
+          textAlign='center'
+        >
+          {course.name.toLowerCase()}
+        </Text>
+      </Link>
     </Box>
   );
 }

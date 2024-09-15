@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import useAuthStore from "../lib/store";
+import { Box } from "@chakra-ui/react";
 
 export default function AuthenticatedLayout({
   children,
@@ -28,5 +29,5 @@ export default function AuthenticatedLayout({
   }, [user, router]);
 
   // Render children when the user is authenticated
-  return <>{children}</>;
+  return <Box padding={10}>{children}</Box>;
 }

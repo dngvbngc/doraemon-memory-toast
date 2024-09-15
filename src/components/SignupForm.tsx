@@ -9,11 +9,11 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { createUser, State } from "@/app/lib/actions";
+import { createUser, CreateUserState } from "@/app/lib/actions";
 import { useFormState } from "react-dom";
 
 const SignupForm = () => {
-  const initialState: State = { message: null, errors: {} };
+  const initialState: CreateUserState = { message: null, errors: {} };
 
   const [state, formAction] = useFormState(createUser, initialState);
 
@@ -138,6 +138,7 @@ const SignupForm = () => {
 
         <Button
           bgColor={{ base: "lightblue", lg: "lightpink" }}
+          _hover={{ bgColor: { base: "skyblue", lg: "hotpink" } }}
           color='black'
           type='submit'
           aria-disabled={username === "" || unableToSubmit}

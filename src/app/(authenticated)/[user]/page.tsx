@@ -1,7 +1,7 @@
 import { Grid, GridItem, Heading, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import shizuka from "@/assets/profiles/shizuka.webp";
-import { fetchCoursesByUser } from "@/app/lib/data";
+import { fetchBreadCountByUser, fetchCoursesByUser } from "@/app/lib/data";
 import { Metadata } from "next";
 import CourseList from "@/components/users/CourseList";
 
@@ -16,13 +16,13 @@ export default async function UserHomePage({
 }) {
   const user = params.user;
   const courses = await fetchCoursesByUser(user);
+  const breadCount = await fetchBreadCountByUser(user);
 
   return (
     <Grid
       templateAreas={{ base: `"profile" "content"`, lg: `"profile content"` }}
       gridTemplateColumns={{ base: `"1fr"`, lg: "20vw 1fr" }}
       gap='20'
-      padding={10}
     >
       <GridItem area={"profile"}>
         <Heading textAlign='center' padding={2}>
@@ -43,8 +43,11 @@ export default async function UserHomePage({
         <Heading paddingTop={10} textAlign='center' fontSize='x-large'>
           contributions
         </Heading>
-        <Text padding={3} textAlign='center' fontSize='large'>
+        <Text paddingTop={5} textAlign='center' fontSize='large'>
           <i>&#9734;</i> {courses.length} loaves
+        </Text>
+        <Text paddingTop={3} textAlign='center' fontSize='large'>
+          <i>&#9734;</i> {breadCount} breads
         </Text>
       </GridItem>
       <GridItem area={"content"}>

@@ -7,4 +7,4 @@ export default function SignupPage() {
       <SignupForm />
     </Box>
   );
-}
+} 

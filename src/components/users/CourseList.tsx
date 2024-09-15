@@ -4,6 +4,7 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { UserCourseInfo } from "@/app/lib/definitions";
 import CourseLoaf from "./CourseLoaf";
+import AddCourseLoaf from "./AddCourseLoaf";
 
 interface Props {
   courses: UserCourseInfo[];
@@ -17,6 +18,9 @@ export default function CourseList({ courses }: Props) {
           <CourseLoaf course={c} />
         </Box>
       ))}
+      <Box>
+        <AddCourseLoaf />
+      </Box>
     </SimpleGrid>
   );
 }
