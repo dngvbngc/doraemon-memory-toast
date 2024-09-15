@@ -20,11 +20,11 @@ export default async function UserHomePage({
 
   return (
     <Grid
-      templateAreas={{ base: `"profile" "content"`, lg: `"profile content"` }}
+      templateAreas={{ base: `"content"`, lg: `"profile content"` }}
       gridTemplateColumns={{ base: `"1fr"`, lg: "20vw 1fr" }}
       gap='20'
     >
-      <GridItem area={"profile"}>
+      <GridItem display={{ base: "none", lg: "block" }} area={"profile"}>
         <Heading textAlign='center' padding={2}>
           hi, {user}
         </Heading>

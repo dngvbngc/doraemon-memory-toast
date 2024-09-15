@@ -54,7 +54,7 @@ export default function ActionBar({
 
   if (isEditing)
     return (
-      <HStack>
+      <HStack justifyContent='center'>
         <form onSubmit={deleteCourseWithId}>
           <Button
             type='submit'
@@ -71,7 +71,7 @@ export default function ActionBar({
     );
 
   return (
-    <HStack>
+    <HStack justifyContent='center'>
       <Button>
         <EditIcon onClick={setIsEditing} />
       </Button>

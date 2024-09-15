@@ -82,8 +82,8 @@ export default function BreadDiv({ isEditing, user, courseId, bread }: Props) {
       <Box
         style={{
           position: "relative",
-          width: "38vw",
         }}
+        width={{ base: "80vw", lg: "38vw" }}
       >
         <Image
           style={{

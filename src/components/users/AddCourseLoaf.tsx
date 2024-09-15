@@ -38,8 +38,8 @@ export default function AddCourseLoaf() {
     <Box
       style={{
         position: "relative",
-        maxWidth: "20vw",
       }}
+      maxWidth={{ base: "70vw", md: "40vw", lg: "20vw" }}
       _hover={{ transform: `scale(1.2)`, transition: `0.1s ease-in-out` }}
     >
       <Image

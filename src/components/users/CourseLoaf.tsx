@@ -19,8 +19,8 @@ export default function CourseLoaf({ course }: Props) {
     <Box
       style={{
         position: "relative",
-        maxWidth: "20vw",
       }}
+      maxWidth={{ base: "70vw", md: "40vw", lg: "20vw" }}
       _hover={{ transform: `scale(1.2)`, transition: `0.1s ease-in-out` }}
     >
       <Image
@@ -38,8 +38,8 @@ export default function CourseLoaf({ course }: Props) {
           style={{
             position: "absolute",
             top: "50%",
-            left: "40%",
-            transform: "translate(-30%, -50%)",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             fontWeight: "bold",
             color: "black",
             zIndex: 1,

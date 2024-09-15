@@ -52,8 +52,8 @@ export default function AddBreadDiv({ isEditing, user, courseId }: Props) {
       display={isEditing ? "block" : "none"}
       style={{
         position: "relative",
-        width: "38vw",
       }}
+      width={{ base: "80vw", lg: "38vw" }}
     >
       <Image
         style={{
@@ -83,7 +83,8 @@ export default function AddBreadDiv({ isEditing, user, courseId }: Props) {
               id='content'
               name='content'
               required
-              style={{ height: "48vh", width: "20vw" }}
+              height={{ base: "25vh", md: "38vh", lg: "48vh" }}
+              width={{ base: "40vw", lg: "20vw" }}
               variant='fill'
               marginBottom={1}
               maxLength={maxLength}

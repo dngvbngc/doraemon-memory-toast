@@ -27,7 +27,7 @@ const NavBar = () => {
         justifyContent='space-between'
         fontSize='20'
         paddingX={5}
-        paddingY={2}
+        height='5dvh'
       >
         <Box>
           <Link href='/'>

@@ -1,7 +1,7 @@
 "use client";
 
 import { CourseBreadInfo } from "@/app/lib/definitions";
-import { Center, Heading, HStack, Spacer, Text } from "@chakra-ui/react";
+import { Center, Heading, HStack, Spacer, Stack, Text } from "@chakra-ui/react";
 import ActionBar from "./ActionBar";
 import AddBreadDiv from "./AddBreadDiv";
 import BreadDiv from "./BreadDiv";
@@ -19,13 +19,18 @@ export default function CourseDisplay({ name, user, courseId, breads }: Props) {
 
   return (
     <>
-      <HStack
-        justifyContent='space-between'
-        paddingLeft={20}
-        paddingRight={10}
+      <Stack
+        direction={{ base: "column", lg: "row" }}
+        justifyContent={{ base: "center", lg: "space-between" }}
+        paddingLeft={{ lg: 20 }}
+        paddingRight={{ lg: 10 }}
         paddingBottom={10}
       >
-        <Heading paddingLeft={10} textAlign='center' width='80vw'>
+        <Heading
+          paddingLeft={{ lg: 10 }}
+          textAlign='center'
+          width={{ lg: "80vw" }}
+        >
           {name}
         </Heading>
         <Spacer />
@@ -35,7 +40,7 @@ export default function CourseDisplay({ name, user, courseId, breads }: Props) {
           user={user}
           courseId={courseId}
         />
-      </HStack>
+      </Stack>
       {breads.length >= 1 ? (
         <HStack
           spacing={5}
@@ -43,6 +48,7 @@ export default function CourseDisplay({ name, user, courseId, breads }: Props) {
           whiteSpace='nowrap'
           width='100%'
           paddingX={5}
+          paddingTop={{ base: "8vh", lg: 0 }}
         >
           <div>
             <AddBreadDiv
