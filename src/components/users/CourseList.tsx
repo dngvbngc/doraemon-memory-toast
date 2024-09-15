@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Center, SimpleGrid } from "@chakra-ui/react";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { UserCourseInfo } from "@/app/lib/definitions";
 import CourseLoaf from "./CourseLoaf";
