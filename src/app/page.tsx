@@ -96,8 +96,8 @@ export default function Home() {
                   fontFamily='Comic Sans MS'
                   fontSize={{ base: "small", lg: "xl" }}
                 >
-                  A favorite gadget among Doraemon's fans. In the manga, lesson
-                  content can be 'printed' on this piece of toast, and whoever
+                  A favorite gadget among Doraemon&#39;s fans. In the manga, lesson
+                  content can be &#39;printed&#39; on this piece of toast, and whoever
                   consumes the toast will memorize the content instantly.
                   <br></br>
                   <br></br>
@@ -124,7 +124,7 @@ export default function Home() {
                 color='#c99276'
                 zIndex={5}
               >
-                let's get this{" "}
+                let&#39;s get this{" "}
                 <Text color='black' as='span'>
                   bread
                 </Text>
