@@ -157,6 +157,17 @@ export default function BreadDiv({ isEditing, user, courseId, bread }: Props) {
                 name='course-id'
               />
               <br></br>
+              {state?.errors?.content &&
+                state.errors.content.map((error: string) => (
+                  <small style={{ color: "red" }} key={error}>
+                    {error} <br></br>
+                  </small>
+                ))}
+              {state?.message && (
+                <small style={{ color: "red" }}>
+                  {state.message} <br></br>
+                </small>
+              )}
               <Button
                 bgColor='lightpink'
                 _hover={{ bgColor: "hotpink" }}

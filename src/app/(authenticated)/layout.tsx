@@ -11,7 +11,7 @@ export default function AuthenticatedLayout({
   children: React.ReactNode;
 }>) {
   const { user } = useAuthStore();
-  const pathName = usePathname().slice(1);
+  const pathName = usePathname();
   const router = useRouter();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function AuthenticatedLayout({
       if (user === "") {
         router.push("/login");
       }
-      if (!pathName.startsWith(user)) {
+      if (!pathName.startsWith(`/${user}`)) {
         router.push(`/${encodeURIComponent(user)}`);
       }
     }, 100);

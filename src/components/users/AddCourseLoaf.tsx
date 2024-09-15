@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Input, Text, Spinner, useToast } from "@chakra-ui/react";
+import { Box, Button, Input, Text, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import loafImage from "@/assets/loaf.svg";
 import Image from "next/image";
