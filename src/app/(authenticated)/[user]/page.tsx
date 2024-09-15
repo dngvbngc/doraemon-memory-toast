@@ -1,6 +1,6 @@
 import { Grid, GridItem, Heading, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import shizuka from "@/assets/profiles/shizuka.webp";
+import nobita from "@/assets/profiles/nobita.webp";
 import { fetchBreadCountByUser, fetchCoursesByUser } from "@/app/lib/data";
 import { Metadata } from "next";
 import CourseList from "@/components/users/CourseList";
@@ -36,9 +36,10 @@ export default async function UserHomePage({
             marginLeft: "1vw",
             marginTop: "1vw",
             borderRadius: "18vw",
+            transform: `scaleX(-1)`,
           }}
-          src={shizuka}
-          alt='Shizuka as profile photo'
+          src={nobita}
+          alt='Nobita as profile photo'
         ></Image>
         <Heading paddingTop={10} textAlign='center' fontSize='x-large'>
           contributions
