@@ -15,10 +15,10 @@ export default function ProfilePic() {
   const { character, change } = useProfilePictureStore();
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (character !== "") {
+      if (character === "") {
         change("nobita");
       }
-    }, 100);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
