@@ -9,10 +9,20 @@ import chaien from "@/assets/profiles/chaien.webp";
 import Image from "next/image";
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";
 import { Button, HStack } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ProfilePic() {
   const { character, change } = useProfilePictureStore();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (character !== "") {
+        change("nobita");
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const [isEditing, setIsEditing] = useState(false);
 
   const characters = ["nobita", "shizuka", "deki", "chaien", "suneo"];
