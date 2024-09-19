@@ -21,3 +21,20 @@ const useAuthStore = create(
 );
 
 export default useAuthStore;
+
+interface ProfilePictureStore {
+  character: string;
+  change: (character: string) => void;
+}
+
+export const useProfilePictureStore = create(
+  persist<ProfilePictureStore>(
+    (set) => ({
+      character: "",
+      change: (character: string) => set(() => ({ character })),
+    }),
+    {
+      name: "profile-storage",
+    }
+  )
+);

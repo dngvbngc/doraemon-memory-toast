@@ -1,9 +1,8 @@
 import { Grid, GridItem, Heading, Text } from "@chakra-ui/react";
-import Image from "next/image";
-import nobita from "@/assets/profiles/nobita.webp";
 import { fetchBreadCountByUser, fetchCoursesByUser } from "@/app/lib/data";
 import { Metadata } from "next";
 import CourseList from "@/components/users/CourseList";
+import ProfilePic from "@/components/users/ProfilePic";
 
 export const metadata: Metadata = {
   title: "Your Loaves",
@@ -28,19 +27,7 @@ export default async function UserHomePage({
         <Heading textAlign='center' padding={2}>
           hi, {user}
         </Heading>
-        <Image
-          style={{
-            width: "18vw",
-            height: "18vw",
-            objectFit: "cover",
-            marginLeft: "1vw",
-            marginTop: "1vw",
-            borderRadius: "18vw",
-            transform: `scaleX(-1)`,
-          }}
-          src={nobita}
-          alt='Nobita as profile photo'
-        ></Image>
+        <ProfilePic />
         <Heading paddingTop={10} textAlign='center' fontSize='x-large'>
           contributions
         </Heading>
