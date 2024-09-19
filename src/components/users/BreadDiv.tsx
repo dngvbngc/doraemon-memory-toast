@@ -135,7 +135,8 @@ export default function BreadDiv({ isEditing, user, courseId, bread }: Props) {
                 id='content'
                 name='content'
                 required
-                style={{ height: "48vh", width: "20vw" }}
+                height={{ base: "25vh", md: "38vh", lg: "48vh" }}
+                width={{ base: "40vw", lg: "20vw" }}
                 variant='fill'
                 marginBottom={1}
                 maxLength={maxLength}
